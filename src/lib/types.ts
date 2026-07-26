@@ -69,6 +69,14 @@ export interface Movie {
   posterUrl?: string;
   /** External source id (e.g. TMDB id) attached during ingestion. */
   tmdbId?: number;
+  /** YouTube video id for the trailer. */
+  trailerId?: string;
+  /** Cast with optional headshots (from ingestion). */
+  castMembers?: { name: string; image?: string }[];
+  /** A critic review reference (rating out of 5, links to the full article). */
+  critic?: { title: string; author: string; url: string; rating: number };
+  /** Aggregate user rating (average out of 5, count). */
+  userScore?: { average: number; total: number };
   /** Optional critic-ish score 0-100 for UI flavor */
   buzz?: number;
   isLocal?: boolean;
