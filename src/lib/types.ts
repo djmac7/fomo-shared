@@ -19,6 +19,8 @@ export interface Chain {
   /** Base URL of the chain's booking/showtime site */
   bookingBaseUrl: string;
   brandColor: string;
+  /** Real brand logo image URL (from ingestion); falls back to a monogram. */
+  logoUrl?: string;
 }
 
 export interface City {
