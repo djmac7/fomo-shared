@@ -42,6 +42,8 @@ export interface Theater {
   bookingUrl: string;
   lat?: number;
   lng?: number;
+  address?: string;
+  phone?: string;
 }
 
 export interface Movie {
