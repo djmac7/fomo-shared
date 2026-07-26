@@ -4,7 +4,7 @@
 // can populate the same shapes the UI already reads.
 // ─────────────────────────────────────────────────────────────
 
-export type CinemaFormat = "2D" | "3D" | "IMAX" | "IMAX 3D" | "Dolby Atmos" | "4DX" | "Director's Club" | "Premiere";
+export type CinemaFormat = "2D" | "3D" | "IMAX" | "IMAX 3D" | "Dolby Atmos" | "4DX" | "ScreenX" | "Director's Club" | "Premiere";
 
 export type MtrcbRating = "G" | "PG" | "R-13" | "R-16" | "R-18" | "NYR";
 
@@ -79,8 +79,8 @@ export interface Showtime {
   /** 24h HH:MM */
   time: string;
   format: CinemaFormat;
-  /** PHP price */
-  price: number;
+  /** PHP price; optional — not all sources expose pricing (e.g. ClickTheCity). */
+  price?: number;
   /** Deep link to the specific booking flow */
   bookingUrl: string;
   /** e.g. "Cinema 4" */

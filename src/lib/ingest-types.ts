@@ -1,4 +1,4 @@
-import type { Movie, Showtime } from "@/lib/types";
+import type { Chain, City, Movie, Showtime, Theater } from "@/lib/types";
 
 // ─────────────────────────────────────────────────────────────
 // Contracts shared between the ingestion pipeline (src/ingest)
@@ -53,3 +53,21 @@ export interface GeneratedShowtimes {
 
 /** Partial movie enrichment (posters, ids) keyed by our movie id. */
 export type MovieEnrichment = (Partial<Movie> & { id: string })[];
+
+/**
+ * A complete ingested dataset that REPLACES the seed catalog. Written by the
+ * ClickTheCity pipeline. When present, the app is fully data-driven; when
+ * absent, it falls back to the hand-authored seed.
+ */
+export interface GeneratedDataset {
+  generatedAt: string;
+  source: string; // e.g. "clickthecity"
+  region: string; // e.g. "Metro Manila"
+  window: string[];
+  chains: Chain[];
+  cities: City[];
+  theaters: Theater[];
+  movies: Movie[];
+  showtimes: Showtime[];
+  meta: IngestMeta;
+}

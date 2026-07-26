@@ -60,8 +60,11 @@ export function to12h(time: string): string {
   return `${hr}:${m.toString().padStart(2, "0")} ${period}`;
 }
 
-/** Human "July 23, 2026" from YYYY-MM-DD. */
-export function fullDateLabel(dateStr: string): string {
+/** Human "July 23, 2026" from YYYY-MM-DD. Returns "" for missing/invalid input. */
+export function fullDateLabel(dateStr?: string): string {
+  if (!dateStr) return "";
   const [y, m, d] = dateStr.split("-").map(Number);
-  return `${["January","February","March","April","May","June","July","August","September","October","November","December"][m - 1]} ${d}, ${y}`;
+  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"][m - 1];
+  if (!month || !d || !y) return "";
+  return `${month} ${d}, ${y}`;
 }
