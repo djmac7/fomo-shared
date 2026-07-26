@@ -68,3 +68,9 @@ export function fullDateLabel(dateStr?: string): string {
   if (!month || !d || !y) return "";
   return `${month} ${d}, ${y}`;
 }
+
+/** True if an ISO date (YYYY-MM-DD) is strictly after today, Manila time. */
+export function isUpcomingDate(dateStr?: string): boolean {
+  if (!dateStr) return false;
+  return dateStr > manilaDateStr();
+}
