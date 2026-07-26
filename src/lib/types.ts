@@ -77,6 +77,10 @@ export interface Movie {
   critic?: { title: string; author: string; url: string; rating: number };
   /** Aggregate user rating (average out of 5, count). */
   userScore?: { average: number; total: number };
+  /** Audience score 0-100 (from TMDB when enriched) — Fandango-style. */
+  score?: number;
+  /** Wide backdrop image for a cinematic header (from TMDB when enriched). */
+  backdropUrl?: string;
   /** Optional critic-ish score 0-100 for UI flavor */
   buzz?: number;
   isLocal?: boolean;
