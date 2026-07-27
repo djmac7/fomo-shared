@@ -29,6 +29,67 @@ export interface City {
   region: string; // e.g. "Metro Manila"
 }
 
+/** A crowd sentiment tag surfaced from reviews, e.g. "Cold", "Great sound". */
+export interface ReviewTag {
+  label: string;
+  /** Emoji shown alongside the label. */
+  icon?: string;
+  sentiment: "pos" | "neg" | "neutral";
+  /** How many reviewers this represents (when derived from real reviews). */
+  count?: number;
+}
+
+export interface TheaterReview {
+  author: string;
+  /** 1–5. */
+  rating: number;
+  text: string;
+  /** e.g. "2 weeks ago". */
+  relativeTime?: string;
+}
+
+/** One seat in a scraped auditorium layout. */
+export interface Seat {
+  /** Grid column (gaps between columns are physical aisles). */
+  col: number;
+  /** Seat label, e.g. "A-17". */
+  label: string;
+  type?: "standard" | "accessible" | "companion" | "recliner";
+}
+export interface SeatRow {
+  /** Row letter, e.g. "A". */
+  row: string;
+  seats: Seat[];
+}
+/** A real auditorium layout scraped from the ticketing seat-selection step. */
+export interface HallLayout {
+  /** Screen/hall name as shown by the operator, e.g. "MOA Cinema 3". */
+  screen: string;
+  /** Seat-area category, e.g. "Standard", "Director's Club". */
+  category?: string;
+  rows: SeatRow[];
+  capacity: number;
+}
+
+/** Enrichment about the venue itself — what makes each theater worth choosing. */
+export interface TheaterEnrichment {
+  /** Aggregate rating, 0–5 (from Google Places when enriched). */
+  rating?: number;
+  ratingCount?: number;
+  /** Real venue photos (locally stored under /theaters after ingest). */
+  photos?: string[];
+  /** Amenities/facilities, e.g. "Recliner seats", "In-seat dining". */
+  amenities?: string[];
+  /** Signature premium experience, e.g. Mamou at the Movies. */
+  premium?: { name: string; blurb: string };
+  /** Ticket price range (₱) across this theater's showtimes. */
+  priceRange?: { min: number; max: number };
+  /** Crowd sentiment tags. */
+  tags?: ReviewTag[];
+  /** A few representative reviews. */
+  reviews?: TheaterReview[];
+}
+
 export interface Theater {
   id: string; // slug e.g. "sm-megamall"
   name: string;
@@ -44,6 +105,10 @@ export interface Theater {
   lng?: number;
   address?: string;
   phone?: string;
+  /** Venue enrichment from the ingest pipeline (Google Places). Editorial
+   *  defaults (amenities, premium concepts, tags) are layered on at read time
+   *  via lib/theater-enrichment.ts. */
+  enrichment?: TheaterEnrichment;
 }
 
 export interface Movie {
@@ -69,6 +134,8 @@ export interface Movie {
   posterUrl?: string;
   /** External source id (e.g. TMDB id) attached during ingestion. */
   tmdbId?: number;
+  /** IMDb id (e.g. "tt1234567") — enables a direct IMDb title link. */
+  imdbId?: string;
   /** YouTube video id for the trailer. */
   trailerId?: string;
   /** Cast with optional headshots (from ingestion). */
@@ -79,6 +146,17 @@ export interface Movie {
   userScore?: { average: number; total: number };
   /** Audience score 0-100 (from TMDB when enriched) — Fandango-style. */
   score?: number;
+  /** External critic/audience ratings (from OMDb when enriched). */
+  ratings?: {
+    /** IMDb rating, 0–10. */
+    imdb?: number;
+    /** IMDb vote count. */
+    imdbVotes?: number;
+    /** Rotten Tomatoes Tomatometer, 0–100 (critics). */
+    rtCritic?: number;
+    /** Metacritic Metascore, 0–100. */
+    metacritic?: number;
+  };
   /** Wide backdrop image for a cinematic header (from TMDB when enriched). */
   backdropUrl?: string;
   /** Optional critic-ish score 0-100 for UI flavor */
