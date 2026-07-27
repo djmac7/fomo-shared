@@ -30,19 +30,63 @@ export interface SourceResult {
   note?: string;
 }
 
-/** Persisted provenance for the whole run — powers freshness UI. */
+/** Per-source merge outcome — how much of the board a direct source replaced. */
+export interface SourceMergeStats {
+  /** Raw rows the source returned for the window. */
+  rowsFetched: number;
+  /** Distinct catalog theaters the source's branches matched. */
+  theatersMatched: number;
+  /** (theater × movie) pairs whose CTC rows were replaced by direct rows. */
+  pairsReplaced: number;
+  /** Direct showtime rows written into the dataset. */
+  directRowsAdded: number;
+  /** CTC rows dropped in favor of direct rows. */
+  ctcRowsRemoved: number;
+  /** Source branch keys we couldn't match to a catalog theater (truncated). */
+  unmatchedBranches?: string[];
+}
+
+/** Per-source provenance entry recorded on every run. */
+export interface SourceProvenance {
+  id: string;
+  chainId: string;
+  /** aggregator = ClickTheCity spine; direct = a chain's own first-party feed. */
+  kind?: "aggregator" | "direct";
+  ok: boolean;
+  count: number;
+  fetchedAt: string;
+  note?: string;
+  stats?: SourceMergeStats;
+  /** True when a direct source that previously landed rows now lands none. */
+  degraded?: boolean;
+  /** Direct rows this source landed on the previous run (for regression checks). */
+  prevDirectRows?: number;
+}
+
+/** How much of the final board is first-party vs aggregator, overall + per chain. */
+export interface CoverageSummary {
+  total: number;
+  direct: number;
+  ctc: number;
+  priced: number;
+  byChain: {
+    chainId: string;
+    name: string;
+    total: number;
+    direct: number;
+    /** direct = fully first-party, ctc = still on the aggregator, mixed = partial. */
+    source: "direct" | "ctc" | "mixed";
+  }[];
+}
+
+/** Persisted provenance for the whole run — powers freshness + coverage UI. */
 export interface IngestMeta {
   generatedAt: string; // ISO
   window: string[]; // date strings covered
-  sources: {
-    id: string;
-    chainId: string;
-    ok: boolean;
-    count: number;
-    fetchedAt: string;
-    note?: string;
-  }[];
+  sources: SourceProvenance[];
   totals: { showtimes: number; movies: number };
+  /** Direct-vs-aggregator coverage of the assembled board (added by run-ctc). */
+  coverage?: CoverageSummary;
 }
 
 export interface GeneratedShowtimes {
