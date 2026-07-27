@@ -29,7 +29,11 @@ export interface EventVenue {
   area?: string;
   /** City slug (matches data/cities.ts) when known. */
   cityId?: string;
-  region?: string; // e.g. "Metro Manila"
+  city?: string; // display city, e.g. "Cebu City"
+  province?: string; // e.g. "Cebu"
+  /** Administrative region slug (see data/ph-geo.ts), e.g. "central-visayas". */
+  regionId?: string;
+  region?: string; // display region, e.g. "Central Visayas"
   lat?: number;
   lng?: number;
   /** A marquee premium venue (arena / major theater / resort venue). */
@@ -55,6 +59,9 @@ export interface LiveEvent {
   // Where
   venueId: string;
   venueName: string;
+  /** Administrative region slug (data/ph-geo.ts) — denormalized for filtering. */
+  regionId?: string;
+  region?: string; // display region name
 
   // When — startDate/endDate frame the run; sessions are the individual nights.
   startDate: string; // ISO date YYYY-MM-DD (earliest)
@@ -96,6 +103,8 @@ export interface EventsIngestMeta {
     note?: string;
   }[];
   totals: { events: number; premium: number; venues: number };
+  /** Event counts per region slug, most-populous first. */
+  regions: { id: string; name: string; count: number }[];
 }
 
 /** The generated events dataset written to src/data/generated/events.json. */
