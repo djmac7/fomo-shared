@@ -76,8 +76,17 @@ export interface TheaterEnrichment {
   /** Aggregate rating, 0–5 (from Google Places when enriched). */
   rating?: number;
   ratingCount?: number;
-  /** Real venue photos (locally stored under /theaters after ingest). */
+  /** Real venue photos (locally stored under /theaters). Populated either by
+   *  the Google Places ingest (live) or the curated open-web scrape (editorial,
+   *  see data/generated/theater-photos.json). */
   photos?: string[];
+  /** Per-photo attribution for the editorial (open-web) photos, aligned by index
+   *  with `photos`. e.g. "Photo: Juan Dela Cruz · Google Maps". */
+  photoCredits?: { credit?: string; sourcePage?: string }[];
+  /** Locally-hosted static map image for this venue (baked at build time). */
+  map?: string;
+  /** Link to the venue's Google Maps place (free interactive map). */
+  googleMapsUri?: string;
   /** Amenities/facilities, e.g. "Recliner seats", "In-seat dining". */
   amenities?: string[];
   /** Signature premium experience, e.g. Mamou at the Movies. */
