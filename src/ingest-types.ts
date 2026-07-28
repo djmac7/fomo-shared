@@ -1,4 +1,4 @@
-import type { Chain, City, Movie, Showtime, Theater } from "@/lib/types";
+import type { Chain, City, Movie, Showtime, Theater } from "./types";
 
 // ─────────────────────────────────────────────────────────────
 // Contracts shared between the ingestion pipeline (src/ingest)

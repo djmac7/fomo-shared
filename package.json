@@ -1,0 +1,59 @@
+{
+  "name": "@fomo/shared",
+  "version": "0.1.0",
+  "description": "Shared type contract + reference data for FOMO (web + data projects).",
+  "license": "UNLICENSED",
+  "exports": {
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js",
+      "require": "./dist/types.js",
+      "default": "./dist/types.js"
+    },
+    "./ingest-types": {
+      "types": "./dist/ingest-types.d.ts",
+      "import": "./dist/ingest-types.js",
+      "require": "./dist/ingest-types.js",
+      "default": "./dist/ingest-types.js"
+    },
+    "./events-types": {
+      "types": "./dist/events-types.d.ts",
+      "import": "./dist/events-types.js",
+      "require": "./dist/events-types.js",
+      "default": "./dist/events-types.js"
+    },
+    "./dates": {
+      "types": "./dist/dates.d.ts",
+      "import": "./dist/dates.js",
+      "require": "./dist/dates.js",
+      "default": "./dist/dates.js"
+    },
+    "./ph-geo": {
+      "types": "./dist/ph-geo.d.ts",
+      "import": "./dist/ph-geo.js",
+      "require": "./dist/ph-geo.js",
+      "default": "./dist/ph-geo.js"
+    },
+    "./sm-sites": {
+      "types": "./dist/sm-sites.d.ts",
+      "import": "./dist/sm-sites.js",
+      "require": "./dist/sm-sites.js",
+      "default": "./dist/sm-sites.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
