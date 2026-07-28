@@ -21,6 +21,9 @@ export type EventCategory =
   | "music"
   | "other";
 
+/** Curated sub-genre within a category — currently only music/concert acts. */
+export type EventSubgenre = "kpop" | "opm" | "international" | "classical";
+
 /** Where an event happens. Premium marquee venues are curated (see venues.ts). */
 export interface EventVenue {
   id: string; // slug, e.g. "sm-moa-arena"
@@ -54,6 +57,9 @@ export interface LiveEvent {
   title: string;
   slug: string;
   category: EventCategory;
+  /** Curated sub-genre within a category — chiefly for the big concert bucket
+   * (e.g. "kpop", "opm", "international", "classical"). See ingest/events/subgenre.ts. */
+  subgenre?: EventSubgenre;
   description?: string;
 
   // Where
