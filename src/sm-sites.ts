@@ -5,6 +5,8 @@
 export const SM_SITE_ID: Record<string, string> = {
 
   "SM Aura Premier": "2039",
+  "SM City Novaliches": "2041",
+  "The Podium": "2702",
   "SM CDO Downtown Premier": "2076",
   "SM Center Angono": "2071",
   "SM Center Muntinlupa": "2026",

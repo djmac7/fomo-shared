@@ -1,23 +1,23 @@
-# @tonight/shared
+# @vibes/shared
 
-The **contract** shared by the two Tonight projects:
+The **contract** shared by the two Vibes projects:
 
-- [`tonight-web`](../tonight-web) — the public site.
-- [`tonight-data`](../tonight-data) — the ingestion pipeline + `/admin` dashboard.
+- [`vibes-web`](../vibes-web) — the public site.
+- [`vibes-data`](../vibes-data) — the ingestion pipeline + `/admin` dashboard.
 
 It ships raw TypeScript (no build step); consumers compile it via Next's
-`transpilePackages: ["@tonight/shared"]`.
+`transpilePackages: ["@vibes/shared"]`.
 
 ## Exports
 
 | Import | What |
 |---|---|
-| `@tonight/shared/types` | Core domain types (`Chain`, `City`, `Movie`, `Theater`, `Showtime`, `CinemaFormat`, …) |
-| `@tonight/shared/ingest-types` | Dataset + provenance contracts (`GeneratedDataset`, `IngestMeta`, `SourceProvenance`, `CoverageSummary`) |
-| `@tonight/shared/events-types` | Events contracts (`LiveEvent`, `EventVenue`, `GeneratedEvents`, `EventsIngestMeta`) |
-| `@tonight/shared/dates` | Manila-time date helpers (`manilaDateStr`, `dateWindow`, …) |
-| `@tonight/shared/ph-geo` | Philippine region geography (`regionNameById`, …) |
-| `@tonight/shared/sm-sites` | SM Cinema booking site-id map |
+| `@vibes/shared/types` | Core domain types (`Chain`, `City`, `Movie`, `Theater`, `Showtime`, `CinemaFormat`, …) |
+| `@vibes/shared/ingest-types` | Dataset + provenance contracts (`GeneratedDataset`, `IngestMeta`, `SourceProvenance`, `CoverageSummary`) |
+| `@vibes/shared/events-types` | Events contracts (`LiveEvent`, `EventVenue`, `GeneratedEvents`, `EventsIngestMeta`) |
+| `@vibes/shared/dates` | Manila-time date helpers (`manilaDateStr`, `dateWindow`, …) |
+| `@vibes/shared/ph-geo` | Philippine region geography (`regionNameById`, …) |
+| `@vibes/shared/sm-sites` | SM Cinema booking site-id map |
 
 ## Versioning = the safety net
 
@@ -33,6 +33,6 @@ Published to GitHub Packages, or via a git tag while bootstrapping:
 ```jsonc
 // package.json
 "dependencies": {
-  "@tonight/shared": "github:<org>/tonight-shared#v0.1.0"
+  "@vibes/shared": "github:<org>/vibes-shared#v0.1.0"
 }
 ```

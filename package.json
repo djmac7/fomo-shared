@@ -1,7 +1,7 @@
 {
-  "name": "@tonight/shared",
+  "name": "@vibes/shared",
   "version": "0.1.0",
-  "description": "Shared type contract + reference data for Tonight (web + data projects).",
+  "description": "Shared type contract + reference data for Vibes (web + data projects).",
   "license": "UNLICENSED",
   "exports": {
     "./types": {
