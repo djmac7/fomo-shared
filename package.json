@@ -1,7 +1,7 @@
 {
-  "name": "@fomo/shared",
+  "name": "@tonight/shared",
   "version": "0.1.0",
-  "description": "Shared type contract + reference data for FOMO (web + data projects).",
+  "description": "Shared type contract + reference data for Tonight (web + data projects).",
   "license": "UNLICENSED",
   "exports": {
     "./types": {

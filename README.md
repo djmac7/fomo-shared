@@ -1,23 +1,23 @@
-# @fomo/shared
+# @tonight/shared
 
-The **contract** shared by the two FOMO projects:
+The **contract** shared by the two Tonight projects:
 
-- [`fomo-web`](../fomo-web) — the public site.
-- [`fomo-data`](../fomo-data) — the ingestion pipeline + `/admin` dashboard.
+- [`tonight-web`](../tonight-web) — the public site.
+- [`tonight-data`](../tonight-data) — the ingestion pipeline + `/admin` dashboard.
 
 It ships raw TypeScript (no build step); consumers compile it via Next's
-`transpilePackages: ["@fomo/shared"]`.
+`transpilePackages: ["@tonight/shared"]`.
 
 ## Exports
 
 | Import | What |
 |---|---|
-| `@fomo/shared/types` | Core domain types (`Chain`, `City`, `Movie`, `Theater`, `Showtime`, `CinemaFormat`, …) |
-| `@fomo/shared/ingest-types` | Dataset + provenance contracts (`GeneratedDataset`, `IngestMeta`, `SourceProvenance`, `CoverageSummary`) |
-| `@fomo/shared/events-types` | Events contracts (`LiveEvent`, `EventVenue`, `GeneratedEvents`, `EventsIngestMeta`) |
-| `@fomo/shared/dates` | Manila-time date helpers (`manilaDateStr`, `dateWindow`, …) |
-| `@fomo/shared/ph-geo` | Philippine region geography (`regionNameById`, …) |
-| `@fomo/shared/sm-sites` | SM Cinema booking site-id map |
+| `@tonight/shared/types` | Core domain types (`Chain`, `City`, `Movie`, `Theater`, `Showtime`, `CinemaFormat`, …) |
+| `@tonight/shared/ingest-types` | Dataset + provenance contracts (`GeneratedDataset`, `IngestMeta`, `SourceProvenance`, `CoverageSummary`) |
+| `@tonight/shared/events-types` | Events contracts (`LiveEvent`, `EventVenue`, `GeneratedEvents`, `EventsIngestMeta`) |
+| `@tonight/shared/dates` | Manila-time date helpers (`manilaDateStr`, `dateWindow`, …) |
+| `@tonight/shared/ph-geo` | Philippine region geography (`regionNameById`, …) |
+| `@tonight/shared/sm-sites` | SM Cinema booking site-id map |
 
 ## Versioning = the safety net
 
@@ -33,6 +33,6 @@ Published to GitHub Packages, or via a git tag while bootstrapping:
 ```jsonc
 // package.json
 "dependencies": {
-  "@fomo/shared": "github:<org>/fomo-shared#v0.1.0"
+  "@tonight/shared": "github:<org>/tonight-shared#v0.1.0"
 }
 ```
