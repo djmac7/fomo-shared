@@ -1,7 +1,7 @@
 {
-  "name": "@vibes/shared",
+  "name": "@fomo/shared",
   "version": "0.1.0",
-  "description": "Shared type contract + reference data for Vibes (web + data projects).",
+  "description": "Shared type contract + reference data for FOMO (web + data projects).",
   "license": "UNLICENSED",
   "exports": {
     "./types": {

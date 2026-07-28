@@ -1,23 +1,23 @@
-# @vibes/shared
+# @fomo/shared
 
-The **contract** shared by the two Vibes projects:
+The **contract** shared by the two FOMO projects:
 
-- [`vibes-web`](../vibes-web) — the public site.
-- [`vibes-data`](../vibes-data) — the ingestion pipeline + `/admin` dashboard.
+- [`fomo-web`](../fomo-web) — the public site.
+- [`fomo-data`](../fomo-data) — the ingestion pipeline + `/admin` dashboard.
 
 It ships raw TypeScript (no build step); consumers compile it via Next's
-`transpilePackages: ["@vibes/shared"]`.
+`transpilePackages: ["@fomo/shared"]`.
 
 ## Exports
 
 | Import | What |
 |---|---|
-| `@vibes/shared/types` | Core domain types (`Chain`, `City`, `Movie`, `Theater`, `Showtime`, `CinemaFormat`, …) |
-| `@vibes/shared/ingest-types` | Dataset + provenance contracts (`GeneratedDataset`, `IngestMeta`, `SourceProvenance`, `CoverageSummary`) |
-| `@vibes/shared/events-types` | Events contracts (`LiveEvent`, `EventVenue`, `GeneratedEvents`, `EventsIngestMeta`) |
-| `@vibes/shared/dates` | Manila-time date helpers (`manilaDateStr`, `dateWindow`, …) |
-| `@vibes/shared/ph-geo` | Philippine region geography (`regionNameById`, …) |
-| `@vibes/shared/sm-sites` | SM Cinema booking site-id map |
+| `@fomo/shared/types` | Core domain types (`Chain`, `City`, `Movie`, `Theater`, `Showtime`, `CinemaFormat`, …) |
+| `@fomo/shared/ingest-types` | Dataset + provenance contracts (`GeneratedDataset`, `IngestMeta`, `SourceProvenance`, `CoverageSummary`) |
+| `@fomo/shared/events-types` | Events contracts (`LiveEvent`, `EventVenue`, `GeneratedEvents`, `EventsIngestMeta`) |
+| `@fomo/shared/dates` | Manila-time date helpers (`manilaDateStr`, `dateWindow`, …) |
+| `@fomo/shared/ph-geo` | Philippine region geography (`regionNameById`, …) |
+| `@fomo/shared/sm-sites` | SM Cinema booking site-id map |
 
 ## Versioning = the safety net
 
@@ -33,6 +33,6 @@ Published to GitHub Packages, or via a git tag while bootstrapping:
 ```jsonc
 // package.json
 "dependencies": {
-  "@vibes/shared": "github:<org>/vibes-shared#v0.1.0"
+  "@fomo/shared": "github:<org>/fomo-shared#v0.1.0"
 }
 ```
