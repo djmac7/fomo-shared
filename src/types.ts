@@ -188,8 +188,10 @@ export interface Showtime {
    *  format pricing) rather than the showtime's own source. Lets the UI tell an
    *  exact fare from a reference one. */
   priceEstimated?: boolean;
-  /** Deep link to the specific booking flow */
-  bookingUrl: string;
+  /** Deep link to the specific booking flow. Absent when we have no link we're
+   *  confident in — a search or chain homepage is worse than no link at all,
+   *  so UIs render the showtime without a CTA rather than a dead end. */
+  bookingUrl?: string;
   /** e.g. "Cinema 4" */
   screen?: string;
   /** True when the operator marks the session sold out. The session still
