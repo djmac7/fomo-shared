@@ -18,6 +18,8 @@ export interface RawShowtime {
   price?: number;
   bookingUrl: string;
   screen?: string;
+  /** Operator marks the session sold out (still a real session — keep it). */
+  soldOut?: boolean;
 }
 
 /** Result of running one source adapter for a date window. */

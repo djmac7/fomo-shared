@@ -4,7 +4,7 @@
 // can populate the same shapes the UI already reads.
 // ─────────────────────────────────────────────────────────────
 
-export type CinemaFormat = "2D" | "3D" | "IMAX" | "IMAX 3D" | "Dolby Atmos" | "4DX" | "ScreenX" | "Director's Club" | "Premiere";
+export type CinemaFormat = "2D" | "3D" | "IMAX" | "IMAX 3D" | "Dolby Atmos" | "4DX" | "4DX 3D" | "ScreenX" | "Director's Club" | "Premiere" | "Large Format";
 
 export type MtrcbRating = "G" | "PG" | "R-13" | "R-16" | "R-18" | "NYR";
 
@@ -184,8 +184,16 @@ export interface Showtime {
   format: CinemaFormat;
   /** PHP price; optional — not all sources expose pricing (e.g. ClickTheCity). */
   price?: number;
+  /** True when `price` came from the reference price-book (stable per-theater×
+   *  format pricing) rather than the showtime's own source. Lets the UI tell an
+   *  exact fare from a reference one. */
+  priceEstimated?: boolean;
   /** Deep link to the specific booking flow */
   bookingUrl: string;
   /** e.g. "Cinema 4" */
   screen?: string;
+  /** True when the operator marks the session sold out. The session still
+   *  EXISTS (accuracy: our board should match the operator's), it just can't
+   *  be booked — UIs should render it disabled rather than omit it. */
+  soldOut?: boolean;
 }
