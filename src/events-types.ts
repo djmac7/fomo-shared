@@ -83,6 +83,8 @@ export interface LiveEvent {
   imageUrl?: string;
   organizer?: string;
   ageRange?: string;
+  /** Human-readable running time, e.g. "2 hours 30 minutes" (no reliable numeric across sources). */
+  durationText?: string;
   tags?: string[];
 
   // Buy — the deep-link out to the ticketing flow (aggregator monetization).
