@@ -4,7 +4,7 @@
 // can populate the same shapes the UI already reads.
 // ─────────────────────────────────────────────────────────────
 
-export type CinemaFormat = "2D" | "3D" | "IMAX" | "IMAX 3D" | "Dolby Atmos" | "4DX" | "4DX 3D" | "ScreenX" | "Director's Club" | "Premiere" | "Large Format";
+export type CinemaFormat = "2D" | "3D" | "IMAX" | "IMAX 3D" | "Dolby Atmos" | "4DX" | "4DX 3D" | "ScreenX" | "Director's Club" | "Premiere" | "A-Luxe" | "Large Format";
 
 export type MtrcbRating = "G" | "PG" | "R-13" | "R-16" | "R-18" | "NYR";
 
