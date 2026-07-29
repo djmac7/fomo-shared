@@ -39,6 +39,13 @@ export interface EventVenue {
   region?: string; // display region, e.g. "Central Visayas"
   lat?: number;
   lng?: number;
+  /** Google Places reputation — shown as social proof on venue/event pages. */
+  rating?: number;
+  ratingCount?: number;
+  /** Locally-hosted venue photography (best-ranked Places photos, /venues/*). */
+  photos?: string[];
+  /** Street address, when Places resolves one. */
+  address?: string;
   /** A marquee premium venue (arena / major theater / resort venue). */
   premium: boolean;
 }
