@@ -39,6 +39,12 @@
       "import": "./dist/sm-sites.js",
       "require": "./dist/sm-sites.js",
       "default": "./dist/sm-sites.js"
+    },
+    "./booking": {
+      "types": "./dist/booking.d.ts",
+      "import": "./dist/booking.js",
+      "require": "./dist/booking.js",
+      "default": "./dist/booking.js"
     }
   },
   "files": [
