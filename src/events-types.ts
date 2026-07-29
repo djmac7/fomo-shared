@@ -22,7 +22,7 @@ export type EventCategory =
   | "other";
 
 /** Curated sub-genre within a category — currently only music/concert acts. */
-export type EventSubgenre = "kpop" | "opm" | "international" | "classical";
+export type EventSubgenre = "kpop" | "opm" | "international" | "classical" | "ballet" | "musical" | "play" | "opera" | "dance";
 
 /** Where an event happens. Premium marquee venues are curated (see venues.ts). */
 export interface EventVenue {
