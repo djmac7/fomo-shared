@@ -87,6 +87,15 @@ export interface TheaterEnrichment {
   map?: string;
   /** Link to the venue's Google Maps place (free interactive map). */
   googleMapsUri?: string;
+  /**
+   * Opening hours exactly as Google phrases them, one entry per weekday, e.g.
+   * "Monday: 10:00 AM – 12:00 AM". Feeds schema.org
+   * `openingHoursSpecification` on the cinema page — a local-search signal, and
+   * the thing a person actually wants to know before leaving the house.
+   */
+  openingHours?: string[];
+  /** The cinema's official page — schema.org `sameAs`. */
+  website?: string;
   /** Amenities/facilities, e.g. "Recliner seats", "In-seat dining". */
   amenities?: string[];
   /** Signature premium experience, e.g. Mamou at the Movies. */

@@ -91,6 +91,15 @@ export interface LiveEvent {
 
   imageUrl?: string;
   organizer?: string;
+  /**
+   * The act(s) on stage — schema.org `performer`.
+   *
+   * This is the property that connects a search for the artist ("SB19 concert
+   * manila") to the page, so it is the highest-intent field a MusicEvent has.
+   * Only ever set from an exact match against the curated act registry: a guess
+   * attributes someone else's show to an artist, which is worse than empty.
+   */
+  performers?: string[];
   ageRange?: string;
   /** Human-readable running time, e.g. "2 hours 30 minutes" (no reliable numeric across sources). */
   durationText?: string;
