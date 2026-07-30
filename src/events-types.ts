@@ -44,6 +44,8 @@ export interface EventVenue {
   ratingCount?: number;
   /** Locally-hosted venue photography (best-ranked Places photos, /venues/*). */
   photos?: string[];
+  /** Baked static map of the venue (/venues/maps/*) — no per-view Maps cost. */
+  mapImage?: string;
   /** Street address, when Places resolves one. */
   address?: string;
   /** A marquee premium venue (arena / major theater / resort venue). */
