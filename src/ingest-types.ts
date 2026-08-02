@@ -15,6 +15,8 @@ export interface RawShowtime {
   date: string; // YYYY-MM-DD (Asia/Manila)
   time: string; // HH:MM 24h
   format?: string;
+  /** Operator's premium-room/experience name when the source carries one. */
+  experience?: string;
   price?: number;
   bookingUrl: string;
   screen?: string;

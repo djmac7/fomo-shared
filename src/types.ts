@@ -191,6 +191,11 @@ export interface Showtime {
   /** 24h HH:MM */
   time: string;
   format: CinemaFormat;
+  /** The operator's OWN name for a premium room/experience, verbatim-ish
+   *  ("Family Cinema", "VIP Cinema", "Wolfgang's Premier", "Director's Club",
+   *  "A-Luxe"). `format` is our technical taxonomy; this is their product
+   *  name — show it to users instead of flattening everything to "Premiere". */
+  experience?: string;
   /** PHP price; optional — not all sources expose pricing (e.g. ClickTheCity). */
   price?: number;
   /** True when `price` came from the reference price-book (stable per-theater×
