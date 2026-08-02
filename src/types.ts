@@ -4,7 +4,31 @@
 // can populate the same shapes the UI already reads.
 // ─────────────────────────────────────────────────────────────
 
-export type CinemaFormat = "2D" | "3D" | "IMAX" | "IMAX 3D" | "Dolby Atmos" | "4DX" | "4DX 3D" | "ScreenX" | "Director's Club" | "Premiere" | "A-Luxe" | "Large Format";
+/**
+ * How the picture and sound are DELIVERED — the technical taxonomy, and
+ * nothing else. Exactly these ten values.
+ *
+ * The operator's branded room (Director's Club, A-Luxe, VIP Cinema, Gold
+ * Class, Wolfgang's Premier, Family Cinema, …) is NOT a format: it lives in
+ * `Showtime.experience`. Mixing the two collapsed real distinctions — a 3D
+ * session in an A-Luxe house came through as format "A-Luxe" with the 3D gone,
+ * and then priced as a 2D A-Luxe seat.
+ *
+ * The two large-screen values are DISTINCT, never one generic "Large Format":
+ * SM's Large Screen Format and Ayala's A-Giant are different installations in
+ * different chains, and a moviegoer choosing one is not choosing the other.
+ */
+export type CinemaFormat =
+  | "2D"
+  | "3D"
+  | "IMAX"
+  | "IMAX 3D"
+  | "4DX"
+  | "4DX 3D"
+  | "Dolby Atmos"
+  | "ScreenX"
+  | "Large Screen Format"
+  | "A-Giant";
 
 export type MtrcbRating = "G" | "PG" | "R-13" | "R-16" | "R-18" | "NYR";
 
@@ -194,7 +218,12 @@ export interface Showtime {
   /** The operator's OWN name for a premium room/experience, verbatim-ish
    *  ("Family Cinema", "VIP Cinema", "Wolfgang's Premier", "Director's Club",
    *  "A-Luxe"). `format` is our technical taxonomy; this is their product
-   *  name — show it to users instead of flattening everything to "Premiere". */
+   *  name — show it to users instead of flattening everything to "Premiere".
+   *
+   *  Format and experience are INDEPENDENT: a Director's Club session is
+   *  format "Dolby Atmos" + experience "Director's Club"; a 3D session in an
+   *  A-Luxe house is format "3D" + experience "A-Luxe". Filters compose the
+   *  two with AND, and prices are booked per (format, experience) pair. */
   experience?: string;
   /** PHP price; optional — not all sources expose pricing (e.g. ClickTheCity). */
   price?: number;
