@@ -180,6 +180,20 @@ export interface Movie {
   imdbId?: string;
   /** YouTube video id for the trailer. */
   trailerId?: string;
+  /**
+   * When the trailer was published, ISO 8601, as reported by TMDB.
+   *
+   * Exists for one reason: schema.org VideoObject requires `uploadDate`, and
+   * without it Google rejects the trailer markup outright ("Missing field
+   * uploadDate"). It is carried rather than guessed — a plausible-looking date
+   * invented to satisfy a validator is a claim the site would be making without
+   * evidence, and the whole point of this field is that TMDB actually knows.
+   *
+   * Only set when the trailer came from TMDB's videos list. A trailer sourced
+   * elsewhere has no date, and then the markup correctly omits uploadDate rather
+   * than fabricating one.
+   */
+  trailerPublishedAt?: string;
   /** Cast with optional headshots (from ingestion). */
   castMembers?: { name: string; image?: string }[];
   /** A critic review reference (rating out of 5, links to the full article). */
